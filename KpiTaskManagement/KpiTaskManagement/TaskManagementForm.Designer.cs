@@ -44,10 +44,12 @@
             this.grcTask.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grcTask.Location = new System.Drawing.Point(1, 0);
+            this.grcTask.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grcTask.Location = new System.Drawing.Point(2, 0);
             this.grcTask.MainView = this.gridView1;
+            this.grcTask.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grcTask.Name = "grcTask";
-            this.grcTask.Size = new System.Drawing.Size(799, 390);
+            this.grcTask.Size = new System.Drawing.Size(1198, 600);
             this.grcTask.TabIndex = 0;
             this.grcTask.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -59,18 +61,20 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 400);
+            this.button1.Location = new System.Drawing.Point(18, 615);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 38);
+            this.button1.Size = new System.Drawing.Size(261, 58);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btnAddTask
             // 
-            this.btnAddTask.Location = new System.Drawing.Point(12, 400);
+            this.btnAddTask.Location = new System.Drawing.Point(18, 615);
+            this.btnAddTask.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAddTask.Name = "btnAddTask";
-            this.btnAddTask.Size = new System.Drawing.Size(174, 38);
+            this.btnAddTask.Size = new System.Drawing.Size(261, 58);
             this.btnAddTask.TabIndex = 1;
             this.btnAddTask.Text = "ADD";
             this.btnAddTask.UseVisualStyleBackColor = true;
@@ -78,44 +82,49 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(218, 400);
+            this.button3.Location = new System.Drawing.Point(327, 615);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(174, 38);
+            this.button3.Size = new System.Drawing.Size(261, 58);
             this.button3.TabIndex = 1;
             this.button3.Text = "DETAILED/UPDATE";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(425, 400);
+            this.button4.Location = new System.Drawing.Point(638, 615);
+            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(174, 38);
+            this.button4.Size = new System.Drawing.Size(261, 58);
             this.button4.TabIndex = 1;
             this.button4.Text = "DELETE";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(614, 400);
+            this.button5.Location = new System.Drawing.Point(921, 615);
+            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(174, 38);
+            this.button5.Size = new System.Drawing.Size(261, 58);
             this.button5.TabIndex = 1;
             this.button5.Text = "EXIT";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // TaskManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnAddTask);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grcTask);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TaskManagementForm";
             this.Text = "Task Management Form";
+            this.Load += new System.EventHandler(this.TaskManagementForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grcTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

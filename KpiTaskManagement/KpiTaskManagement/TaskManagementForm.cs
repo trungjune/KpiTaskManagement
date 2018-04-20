@@ -17,11 +17,21 @@ namespace KpiTaskManagement
             InitializeComponent();
         }
 
-        
+
+        private void load()
+        {
+
+        }
+        private void TaskManagementForm_Load(object sender, EventArgs e)
+        {
+            load();
+        }
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
 
         }
+
+        
     }
 }
