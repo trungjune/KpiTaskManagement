@@ -48,7 +48,9 @@ namespace KpiTaskManagement.DAL
 
         public static DataTable LoadAll()
         {          
-            string str = string.Format("select * from tblTask");
+            string str = @"select t.*, CONCAT_WS(' ',e1.EmployeeFirstName, e1.EmployeeLastName) as AssigneeName, 
+                            CONCAT_WS(' ', e2.EmployeeFirstName, e2.EmployeeLastName) as ReporterName 
+                            from tbltask t, tblemployee e1, tblemployee e2 where t.Assignee = e1.ID and t.Reporter = e2.ID";
             return DBManager.InstantDBManger.GetData(str);        
         }
     }
