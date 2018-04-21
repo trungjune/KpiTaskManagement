@@ -1,15 +1,37 @@
 ﻿using System;
 using System.Data;
 using KpiTaskManagement.Common;
+using KpiTaskManagement.Entity;
 
 
 namespace KpiTaskManagement.DAL
 {
     public class TaskDAL : ICommonDAL
     {
-        public long Add(ICommonEntity task)
+        public bool Add(ICommonEntity _task)
         {
-            throw new NotImplementedException();
+            var task = (_task as TaskEntity);
+            string str = string.Empty;
+            try
+            {
+                str = string.Format(@"insert into tblTask (TaskCode,TaskName,Description,Assignee,Reporter,Status,Priority,TaskType) values ('{0}','{1}','{2}',{3},{4},{5},{6},{7}) ",
+                task.TaskCode,
+                task.TaskName,
+                task.Description,               
+                task.Assignee.ID,
+                task.Reporter.ID,
+                (int)task.Status,
+                (int)task.Priority,
+                (int)task.TaskType
+                );
+                DBManager.InstantDBManger.QueryExecutionWithTransaction(str);
+                return true;
+            }
+            catch (Exception exp)
+            {
+                CommonFunctions.ShowErrorDialog("SQL error:" + exp.ToString());
+                return false;
+            }
         }
 
      
@@ -25,9 +47,9 @@ namespace KpiTaskManagement.DAL
         }
 
         public static DataTable LoadAll()
-        {
-            DataTable data= new DataTable();
-            return data; 
+        {          
+            string str = string.Format("select * from tblTask");
+            return DBManager.InstantDBManger.GetData(str);        
         }
     }
 }

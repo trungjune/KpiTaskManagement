@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Data;
-using System.Configuration;
 using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 
 namespace KpiTaskManagement.Common
 {
@@ -10,42 +10,38 @@ namespace KpiTaskManagement.Common
     {
         private static readonly Lazy<DBManager> lazyDBManager = new Lazy<DBManager>(() => new DBManager());
         public static DBManager InstantDBManger { get { return lazyDBManager.Value; } }
-        private string ConnectString = "Server=172.16.99.122; database=TaskManagement; UID=root; password=123456";
+        private string ConnectString = "Server=localhost; database=kpi; UID=root; password=123456; SslMode=none; charset=utf8";
+        private MySqlConnection connection = null;
 
         private DBManager()
         {
         }
-
-        public SqlConnection GetConnect()
-        {
-            return new SqlConnection(ConnectString);
-        }
-        //datatable - string
+       
         public DataTable GetData(string sql)
-        {
-            SqlConnection con = GetConnect();
-            SqlDataAdapter ad = new SqlDataAdapter(sql, con);
+        {          
+            connection = new MySqlConnection(ConnectString);
+            var cmd = new MySqlCommand(sql, connection);
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);          
             DataTable dt = new DataTable();
-            ad.Fill(dt);
-            con.Close();
+            da.Fill(dt);
+            connection.Close();
             return dt;
         }
 
         public void QueryExecutionWithTransaction(string sql)
-        {
-            SqlConnection con = GetConnect();
-            con.Open();
-
-            SqlCommand command = con.CreateCommand();
-            SqlTransaction transaction = con.BeginTransaction();
-            command.Connection = con;
-            command.Transaction = transaction;
+        {            
+            connection = new MySqlConnection(ConnectString);
+            connection.Open();
+            var cmd = new MySqlCommand(sql, connection);
+            var transaction = connection.BeginTransaction();
+            cmd.Connection = connection;
+            cmd.Transaction = transaction;
             try
             {
-                command.CommandText = sql;
-                command.ExecuteNonQuery();
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
                 transaction.Commit();
-
+                connection.Close();
             }
             catch (Exception ex)
             {
@@ -53,30 +49,32 @@ namespace KpiTaskManagement.Common
                 try
                 {
                     transaction.Rollback();
+                    connection.Close();
                 }
                 catch (Exception ex1)
                 {
-              //      LogService.LogError("Query Execution With Transaction roll back", ex1);
+                    connection.Close();
+                    //  LogService.LogError("Query Execution With Transaction roll back", ex1);
                 }
             }
         }
-        public void QueryExecutionWithTransaction(string[] ArrSql)
-        {
-            SqlConnection con = GetConnect();
-            con.Open();
 
-            SqlCommand command = con.CreateCommand();
-            SqlTransaction transaction = con.BeginTransaction();
-            command.Connection = con;
-            command.Transaction = transaction;
+        public void QueryExecutionWithTransaction(string[] ArrSql)
+        {         
+            connection = new MySqlConnection(ConnectString);
+            connection.Open();
+            var cmd = connection.CreateCommand();
+            var transaction = connection.BeginTransaction();
+            cmd.Connection = connection;
+            cmd.Transaction = transaction;
             try
             {
                 foreach (string sql in ArrSql)
                 {
                     if ((sql != string.Empty) && (sql != null))
                     {
-                        command.CommandText = sql;
-                        command.ExecuteNonQuery();
+                        cmd.CommandText = sql;
+                        cmd.ExecuteNonQuery();
                     }
 
                 }
@@ -99,17 +97,20 @@ namespace KpiTaskManagement.Common
 
         public void StoredProcedureExecution(string SqlCommand, Dictionary<string, object> SqlParameterList)
         {
-            SqlConnection con = GetConnect();
+            connection = new MySqlConnection(ConnectString);
+            connection.Open();
             try
             {
-                SqlCommand cmd = new SqlCommand(SqlCommand, con) { CommandType = CommandType.StoredProcedure };
+                var cmd = connection.CreateCommand();
+                cmd.Connection = connection;
+                cmd.CommandType = CommandType.StoredProcedure;
                 foreach (KeyValuePair<string, object> SqlParameter in SqlParameterList)
                 {
                     cmd.Parameters.AddWithValue(SqlParameter.Key, SqlParameter.Value);
                 }
-                if (con.State == ConnectionState.Closed)
+                if (connection.State == ConnectionState.Closed)
                 {
-                    con.Open();
+                    connection.Open();
                 }
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -120,9 +121,9 @@ namespace KpiTaskManagement.Common
             }
             finally
             {
-                if (con.State != ConnectionState.Closed)
+                if (connection.State != ConnectionState.Closed)
                 {
-                    con.Close();
+                    connection.Close();
                 }
             }
         }      

@@ -8,5 +8,7 @@ namespace KpiTaskManagement.Entity
 {
     public class EmployeeEntity
     {
+        public int ID;
+        public String EmployeeName { get; set; }
     }
 }

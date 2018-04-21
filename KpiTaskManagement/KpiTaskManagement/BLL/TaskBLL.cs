@@ -12,18 +12,18 @@ namespace KpiTaskManagement.BLL
     public class TaskBLL
     {
         TaskDAL taskDAL;
-        TaskBLL()
+        public TaskBLL()
         {
             taskDAL = new TaskDAL();
         }
-        public void AddTask(TaskEntity task)
+        public void AddTask(TaskEntity _task)
         {
-            taskDAL.Add(task);
+            taskDAL.Add(_task);
         }
 
-        public void EditTask(TaskEntity task, int ID)
+        public void EditTask(TaskEntity _task, int ID)
         {
-            taskDAL.Edit(task, ID);
+            taskDAL.Edit(_task, ID);
         }
 
         public void DeleteTask(int ID)

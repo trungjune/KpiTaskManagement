@@ -5,6 +5,7 @@ namespace KpiTaskManagement.Entity
 {
     public class TaskEntity:ICommonEntity
     {
+        public int ID;
         public String TaskCode { get; set; }
         public String TaskName { get; set; }
         public String Description { get; set; }
