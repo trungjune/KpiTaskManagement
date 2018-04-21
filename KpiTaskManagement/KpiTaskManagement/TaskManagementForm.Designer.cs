@@ -38,6 +38,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grcTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTask)).BeginInit();
             this.SuspendLayout();
@@ -62,8 +64,10 @@
             this.grvTask.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.grcolID,
             this.grcolTaskCode,
+            this.grcolStatus,
             this.grcolTaskName,
-            this.grcolStatus});
+            this.gridColumn1,
+            this.gridColumn2});
             this.grvTask.GridControl = this.grcTask;
             this.grvTask.Name = "grvTask";
             this.grvTask.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.grvTask_CustomColumnDisplayText);
@@ -144,6 +148,22 @@
             this.button5.Text = "EXIT";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.FieldName = "AssigneeName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "gridColumn2";
+            this.gridColumn2.FieldName = "ReporterName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 4;
+            // 
             // TaskManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -179,6 +199,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn grcolTaskCode;
         private DevExpress.XtraGrid.Columns.GridColumn grcolTaskName;
         private DevExpress.XtraGrid.Columns.GridColumn grcolStatus;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }
 
