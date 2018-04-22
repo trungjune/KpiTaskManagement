@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.Data;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
@@ -16,16 +15,23 @@ namespace KpiTaskManagement.Common
         private DBManager()
         {
         }
-       
+
         public DataTable GetData(string sql)
-        {          
-            connection = new MySqlConnection(ConnectString);
-            var cmd = new MySqlCommand(sql, connection);
-            MySqlDataAdapter da = new MySqlDataAdapter(cmd);          
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            connection.Close();
-            return dt;
+        {
+            try
+            {
+                connection = new MySqlConnection(ConnectString);
+                var cmd = new MySqlCommand(sql, connection);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                connection.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public void QueryExecutionWithTransaction(string sql)

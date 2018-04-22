@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KpiTaskManagement.Common
+﻿namespace KpiTaskManagement.Common
 {
     public enum StatusValue
     {
@@ -13,11 +7,11 @@ namespace KpiTaskManagement.Common
 
     public enum PriorityValue
     {
-
+        High = 0, Medium = 1, Low = 2
     }
 
     public enum TaskTypeValue
     {
-
+        UserStory = 0, Bug = 1
     }
 }

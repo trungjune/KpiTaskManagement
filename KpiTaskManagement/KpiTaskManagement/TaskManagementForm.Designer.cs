@@ -32,14 +32,17 @@
             this.grvTask = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grcolID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grcolTaskCode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grcolTaskName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grcolStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolTaskName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolAssigneeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolReporterName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnAddTask = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnDUTask = new System.Windows.Forms.Button();
+            this.btnDeleteTask = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.grcolPriority = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolTaskType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grcTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTask)).BeginInit();
             this.SuspendLayout();
@@ -49,12 +52,10 @@
             this.grcTask.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grcTask.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grcTask.Location = new System.Drawing.Point(2, 0);
+            this.grcTask.Location = new System.Drawing.Point(1, 0);
             this.grcTask.MainView = this.grvTask;
-            this.grcTask.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grcTask.Name = "grcTask";
-            this.grcTask.Size = new System.Drawing.Size(1198, 600);
+            this.grcTask.Size = new System.Drawing.Size(799, 390);
             this.grcTask.TabIndex = 0;
             this.grcTask.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grvTask});
@@ -66,8 +67,11 @@
             this.grcolTaskCode,
             this.grcolStatus,
             this.grcolTaskName,
-            this.gridColumn1,
-            this.gridColumn2});
+            this.grcolAssigneeName,
+            this.grcolReporterName,
+            this.grcolPriority,
+            this.grcolTaskType,
+            this.grcolDescription});
             this.grvTask.GridControl = this.grcTask;
             this.grvTask.Name = "grvTask";
             this.grvTask.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.grvTask_CustomColumnDisplayText);
@@ -86,6 +90,14 @@
             this.grcolTaskCode.Visible = true;
             this.grcolTaskCode.VisibleIndex = 0;
             // 
+            // grcolStatus
+            // 
+            this.grcolStatus.Caption = "Status";
+            this.grcolStatus.FieldName = "Status";
+            this.grcolStatus.Name = "grcolStatus";
+            this.grcolStatus.Visible = true;
+            this.grcolStatus.VisibleIndex = 2;
+            // 
             // grcolTaskName
             // 
             this.grcolTaskName.Caption = "Task Name";
@@ -94,87 +106,98 @@
             this.grcolTaskName.Visible = true;
             this.grcolTaskName.VisibleIndex = 1;
             // 
-            // grcolStatus
+            // grcolAssigneeName
             // 
-            this.grcolStatus.Caption = "Status";
-            this.grcolStatus.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.grcolStatus.FieldName = "Status";
-            this.grcolStatus.Name = "grcolStatus";
-            this.grcolStatus.Visible = true;
-            this.grcolStatus.VisibleIndex = 2;
+            this.grcolAssigneeName.Caption = "Assignee";
+            this.grcolAssigneeName.FieldName = "AssigneeName";
+            this.grcolAssigneeName.Name = "grcolAssigneeName";
+            this.grcolAssigneeName.Visible = true;
+            this.grcolAssigneeName.VisibleIndex = 3;
+            // 
+            // grcolReporterName
+            // 
+            this.grcolReporterName.Caption = "Reporter";
+            this.grcolReporterName.FieldName = "ReporterName";
+            this.grcolReporterName.Name = "grcolReporterName";
+            this.grcolReporterName.Visible = true;
+            this.grcolReporterName.VisibleIndex = 4;
             // 
             // btnAddTask
             // 
             this.btnAddTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAddTask.Location = new System.Drawing.Point(29, 615);
-            this.btnAddTask.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAddTask.Location = new System.Drawing.Point(19, 400);
             this.btnAddTask.Name = "btnAddTask";
-            this.btnAddTask.Size = new System.Drawing.Size(261, 58);
+            this.btnAddTask.Size = new System.Drawing.Size(174, 38);
             this.btnAddTask.TabIndex = 1;
             this.btnAddTask.Text = "ADD";
             this.btnAddTask.UseVisualStyleBackColor = true;
             this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
             // 
-            // button3
+            // btnDUTask
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(327, 615);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(261, 58);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "DETAILED/UPDATE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDUTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDUTask.Location = new System.Drawing.Point(218, 400);
+            this.btnDUTask.Name = "btnDUTask";
+            this.btnDUTask.Size = new System.Drawing.Size(174, 38);
+            this.btnDUTask.TabIndex = 1;
+            this.btnDUTask.Text = "DETAILED/UPDATE";
+            this.btnDUTask.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnDeleteTask
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button4.Location = new System.Drawing.Point(638, 615);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(261, 58);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "DELETE";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnDeleteTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteTask.Location = new System.Drawing.Point(425, 400);
+            this.btnDeleteTask.Name = "btnDeleteTask";
+            this.btnDeleteTask.Size = new System.Drawing.Size(174, 38);
+            this.btnDeleteTask.TabIndex = 1;
+            this.btnDeleteTask.Text = "DELETE";
+            this.btnDeleteTask.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnExit
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button5.Location = new System.Drawing.Point(921, 615);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(261, 58);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "EXIT";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExit.Location = new System.Drawing.Point(614, 400);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(174, 38);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // gridColumn1
+            // grcolPriority
             // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.FieldName = "AssigneeName";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
+            this.grcolPriority.Caption = "Priority";
+            this.grcolPriority.FieldName = "Priority";
+            this.grcolPriority.Name = "grcolPriority";
+            this.grcolPriority.Visible = true;
+            this.grcolPriority.VisibleIndex = 5;
             // 
-            // gridColumn2
+            // grcolTaskType
             // 
-            this.gridColumn2.Caption = "gridColumn2";
-            this.gridColumn2.FieldName = "ReporterName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
+            this.grcolTaskType.Caption = "TaskType";
+            this.grcolTaskType.FieldName = "TaskType";
+            this.grcolTaskType.Name = "grcolTaskType";
+            this.grcolTaskType.Visible = true;
+            this.grcolTaskType.VisibleIndex = 6;
+            // 
+            // grcolDescription
+            // 
+            this.grcolDescription.Caption = "Description";
+            this.grcolDescription.FieldName = "Description";
+            this.grcolDescription.Name = "grcolDescription";
+            this.grcolDescription.Visible = true;
+            this.grcolDescription.VisibleIndex = 7;
             // 
             // TaskManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnDeleteTask);
+            this.Controls.Add(this.btnDUTask);
             this.Controls.Add(this.btnAddTask);
             this.Controls.Add(this.grcTask);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TaskManagementForm";
@@ -192,15 +215,18 @@
         private DevExpress.XtraGrid.GridControl grcTask;
         private DevExpress.XtraGrid.Views.Grid.GridView grvTask;
         private System.Windows.Forms.Button btnAddTask;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnDUTask;
+        private System.Windows.Forms.Button btnDeleteTask;
+        private System.Windows.Forms.Button btnExit;
         private DevExpress.XtraGrid.Columns.GridColumn grcolID;
         private DevExpress.XtraGrid.Columns.GridColumn grcolTaskCode;
         private DevExpress.XtraGrid.Columns.GridColumn grcolTaskName;
         private DevExpress.XtraGrid.Columns.GridColumn grcolStatus;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn grcolAssigneeName;
+        private DevExpress.XtraGrid.Columns.GridColumn grcolReporterName;
+        private DevExpress.XtraGrid.Columns.GridColumn grcolPriority;
+        private DevExpress.XtraGrid.Columns.GridColumn grcolTaskType;
+        private DevExpress.XtraGrid.Columns.GridColumn grcolDescription;
     }
 }
 

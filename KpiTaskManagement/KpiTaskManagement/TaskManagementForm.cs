@@ -25,8 +25,8 @@ namespace KpiTaskManagement
 
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            DetailedTask detailedTask = new DetailedTask();
-            detailedTask.ShowDialog();
+            DetailedTaskForm detailedTaskForm = new DetailedTaskForm();
+            detailedTaskForm.ShowDialog();
             load();
         }
 
@@ -62,11 +62,47 @@ namespace KpiTaskManagement
                                 break;
                         }
                     }
+
+                if (e.Column.FieldName == "Priority")
+                    if (e.Value != null)
+                    {
+                        switch (e.Value)
+                        {
+                            case 0:
+                                e.DisplayText = PriorityValue.High.ToString();
+                                break;
+                            case 1:
+                                e.DisplayText = PriorityValue.Medium.ToString();
+                                break;
+                            case 2:
+                                e.DisplayText = PriorityValue.Low.ToString();
+                                break;
+                        }
+                    }
+                if (e.Column.FieldName == "TaskType")
+                    if (e.Value != null)
+                    {
+                        switch (e.Value)
+                        {
+                            case 0:
+                                e.DisplayText = TaskTypeValue.UserStory.ToString();
+                                break;
+                            case 1:
+                                e.DisplayText = TaskTypeValue.Bug.ToString();
+                                break;                       
+                        }
+                    }
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-              //  LogService.LogError("Error", ex);
+                CommonFunctions.ShowErrorDialog("SQL error:" + exp.ToString());
+                //  LogService.LogError("Error", ex);
             }
 }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

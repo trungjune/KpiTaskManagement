@@ -5,12 +5,28 @@ using KpiTaskManagement.Entity;
 
 namespace KpiTaskManagement
 {
-    public partial class DetailedTask : Form
+    public partial class DetailedTaskForm : Form
     {
         TaskBLL taskBLL = new TaskBLL();
-        public DetailedTask()
+        EmployeeBLL employeeBLL = new EmployeeBLL();
+
+        private void InitComboBox()
+        {
+            //comboBox1.Items.Clear();
+            //comboBox1.Items.Add(sexType.Male);
+            //comboBox1.Items.Add(sexType.Female);
+            //comboBox1.Items.Add(sexType.Other);
+
+            //  cbxAssignee.Items.Clear();
+            cbxAssignee.DataSource = employeeBLL.LoadEmployeeName();
+            cbxAssignee.DisplayMember = "EmployeeName";
+            cbxAssignee.ValueMember = "ID";
+        }
+
+        public DetailedTaskForm()
         {
             InitializeComponent();
+            InitComboBox();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
@@ -34,6 +50,16 @@ namespace KpiTaskManagement
 
             taskBLL.AddTask(task);
             this.Close();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cbxAssignee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
