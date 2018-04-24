@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using KpiTaskManagement.BLL;
 using KpiTaskManagement.Entity;
+using KpiTaskManagement.Common;
 
 namespace KpiTaskManagement
 {
@@ -11,16 +12,23 @@ namespace KpiTaskManagement
         EmployeeBLL employeeBLL = new EmployeeBLL();
 
         private void InitComboBox()
-        {
-            //comboBox1.Items.Clear();
-            //comboBox1.Items.Add(sexType.Male);
-            //comboBox1.Items.Add(sexType.Female);
-            //comboBox1.Items.Add(sexType.Other);
-
-            //  cbxAssignee.Items.Clear();
+        {           
             cbxAssignee.DataSource = employeeBLL.LoadEmployeeName();
             cbxAssignee.DisplayMember = "EmployeeName";
             cbxAssignee.ValueMember = "ID";
+
+            cbxReporter.DataSource = employeeBLL.LoadEmployeeName();
+            cbxReporter.DisplayMember = "EmployeeName";
+            cbxReporter.ValueMember = "ID";
+
+            cbxStatus.Items.Clear();
+            cbxStatus.Items.Add(StatusValue.ToDo);
+            cbxStatus.Items.Add(StatusValue.InProgress);
+            cbxStatus.Items.Add(StatusValue.ReadyForQA);
+            // ... add het tat cac gia tri cua status la duoc 
+            cbxStatus.SelectedIndex = 0;
+            // priority va task type lam tuong tu nhe
+
         }
 
         public DetailedTaskForm()
