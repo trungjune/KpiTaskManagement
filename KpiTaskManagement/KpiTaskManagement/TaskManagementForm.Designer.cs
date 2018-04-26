@@ -36,13 +36,13 @@
             this.grcolTaskName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grcolAssigneeName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.grcolReporterName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolPriority = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolTaskType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.grcolDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnDUTask = new System.Windows.Forms.Button();
             this.btnDeleteTask = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.grcolPriority = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grcolTaskType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.grcolDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grcTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grvTask)).BeginInit();
             this.SuspendLayout();
@@ -122,48 +122,6 @@
             this.grcolReporterName.Visible = true;
             this.grcolReporterName.VisibleIndex = 4;
             // 
-            // btnAddTask
-            // 
-            this.btnAddTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAddTask.Location = new System.Drawing.Point(19, 400);
-            this.btnAddTask.Name = "btnAddTask";
-            this.btnAddTask.Size = new System.Drawing.Size(174, 38);
-            this.btnAddTask.TabIndex = 1;
-            this.btnAddTask.Text = "ADD";
-            this.btnAddTask.UseVisualStyleBackColor = true;
-            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
-            // 
-            // btnDUTask
-            // 
-            this.btnDUTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDUTask.Location = new System.Drawing.Point(218, 400);
-            this.btnDUTask.Name = "btnDUTask";
-            this.btnDUTask.Size = new System.Drawing.Size(174, 38);
-            this.btnDUTask.TabIndex = 1;
-            this.btnDUTask.Text = "DETAILED/UPDATE";
-            this.btnDUTask.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteTask
-            // 
-            this.btnDeleteTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDeleteTask.Location = new System.Drawing.Point(425, 400);
-            this.btnDeleteTask.Name = "btnDeleteTask";
-            this.btnDeleteTask.Size = new System.Drawing.Size(174, 38);
-            this.btnDeleteTask.TabIndex = 1;
-            this.btnDeleteTask.Text = "DELETE";
-            this.btnDeleteTask.UseVisualStyleBackColor = true;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExit.Location = new System.Drawing.Point(614, 400);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(174, 38);
-            this.btnExit.TabIndex = 1;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
             // grcolPriority
             // 
             this.grcolPriority.Caption = "Priority";
@@ -187,6 +145,49 @@
             this.grcolDescription.Name = "grcolDescription";
             this.grcolDescription.Visible = true;
             this.grcolDescription.VisibleIndex = 7;
+            // 
+            // btnAddTask
+            // 
+            this.btnAddTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAddTask.Location = new System.Drawing.Point(19, 400);
+            this.btnAddTask.Name = "btnAddTask";
+            this.btnAddTask.Size = new System.Drawing.Size(174, 38);
+            this.btnAddTask.TabIndex = 1;
+            this.btnAddTask.Text = "ADD";
+            this.btnAddTask.UseVisualStyleBackColor = true;
+            this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
+            // 
+            // btnDUTask
+            // 
+            this.btnDUTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDUTask.Location = new System.Drawing.Point(218, 400);
+            this.btnDUTask.Name = "btnDUTask";
+            this.btnDUTask.Size = new System.Drawing.Size(174, 38);
+            this.btnDUTask.TabIndex = 1;
+            this.btnDUTask.Text = "DETAILED/UPDATE";
+            this.btnDUTask.UseVisualStyleBackColor = true;
+            this.btnDUTask.Click += new System.EventHandler(this.btnDUTask_Click);
+            // 
+            // btnDeleteTask
+            // 
+            this.btnDeleteTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteTask.Location = new System.Drawing.Point(425, 400);
+            this.btnDeleteTask.Name = "btnDeleteTask";
+            this.btnDeleteTask.Size = new System.Drawing.Size(174, 38);
+            this.btnDeleteTask.TabIndex = 1;
+            this.btnDeleteTask.Text = "DELETE";
+            this.btnDeleteTask.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExit.Location = new System.Drawing.Point(614, 400);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(174, 38);
+            this.btnExit.TabIndex = 1;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // TaskManagementForm
             // 
