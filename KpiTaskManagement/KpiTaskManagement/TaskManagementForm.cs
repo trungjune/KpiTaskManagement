@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using KpiTaskManagement.BLL;
 using KpiTaskManagement.Common;
@@ -111,7 +112,7 @@ namespace KpiTaskManagement
             // lay duoc du lieu cua  selected row vao 1 cai taskentity
             TaskEntity taskEntity = new TaskEntity();
            // Object[] a = grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray;
-             taskEntity.ID = (int)grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray[0];
+            taskEntity.ID = (int)grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray[0];
             taskEntity.TaskCode = grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray[1].ToString();
             taskEntity.TaskName = grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray[2].ToString();
             taskEntity.Description = grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray[3].ToString();
@@ -131,6 +132,18 @@ namespace KpiTaskManagement
             load();
 
             
+        }
+
+        private void btnDeleteTask_Click(object sender, EventArgs e)
+        {
+            int ID = (int)grvTask.GetDataRow(grvTask.GetSelectedRows()[0]).ItemArray[0];
+            DialogResult = MessageBox.Show("Are you sure ?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (DialogResult == DialogResult.OK)
+            {
+                load();               
+            }
+            taskBLL.DeleteTask(ID);
+            load();
         }
     }
 }

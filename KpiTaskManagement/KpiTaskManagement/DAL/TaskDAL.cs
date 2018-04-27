@@ -37,7 +37,18 @@ namespace KpiTaskManagement.DAL
      
         public bool Delete(int ID)
         {
-            throw new NotImplementedException();
+            string str = string.Empty;
+            try
+            {
+                str = string.Format(@"delete from tblTask where ID = {0}",ID);
+                DBManager.InstantDBManger.QueryExecutionWithTransaction(str);
+                return true;
+            }
+            catch (Exception exp)
+            {
+                CommonFunctions.ShowErrorDialog("SQL error:" + exp.ToString());
+                return false;
+            }
         }
 
         
