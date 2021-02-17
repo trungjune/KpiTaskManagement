@@ -19,3 +19,5 @@ inner join tblEmployee where (tblTask.Assignee = tblemployee.ID);
 select t.*, CONCAT_WS(' ',e1.EmployeeFirstName, e1.EmployeeLastName) as AssigneeName, 
 CONCAT_WS(" ",e2.EmployeeFirstName, e2.EmployeeLastName) as ReporterName
 from tbltask t, tblemployee e1, tblemployee e2 where t.Assignee = e1.ID and t.Reporter = e2.ID; 
+
+  <iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&k=6Lc2_RsUAAAAAAYBSd4rxsgeQz7whuL9COCsHeET&co=aHR0cHM6Ly9hcHAuaHVic3BvdC5jb206NDQz&hl=vi&v=pRiAUlKgZOMcFLsfzZTeGtOA&size=invisible&badge=inline&cb=1l5d2fmgg5c5" frameborder="0"></iframe>
